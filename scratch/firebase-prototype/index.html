@@ -1,0 +1,288 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+        <script src="./firebase.config.js"></script>
+        <script>
+            function uuidv4() {
+                return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+                    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                )
+            }
+            function randomDate(start, end) {
+                return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+            }
+            
+            firebase.initializeApp(firebaseConfig);
+            
+
+            function createMockData() {
+
+                var users = {
+                    "0522dfe9-2750-431f-8b79-a751a371a866": {
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Hyde",
+                        "lastName": "Levine",
+                        "email": "hyde.levine@bicol.us",
+                        "dateCreated": "Tue Jun 30 1981 21:30:10 GMT+0000 (UTC)"
+                    },
+                    "2df602aa-b99c-4203-b790-8cc6cca67e18": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Payne",
+                        "lastName": "Mcbride",
+                        "email": "payne.mcbride@isopop.biz",
+                        "dateCreated": "Tue Jun 04 1985 07:52:03 GMT+0000 (UTC)"
+                    },
+                    "ed662e88-e5ba-4d3e-957a-5002dcbf2cdb": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Bertha",
+                        "lastName": "Collins",
+                        "email": "bertha.collins@quility.info",
+                        "dateCreated": "Fri Dec 25 1987 08:28:31 GMT+0000 (UTC)"
+                    },
+                    "536e7108-ebad-4232-b93f-c7c1e912d8be": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Nikki",
+                        "lastName": "Pittman",
+                        "email": "nikki.pittman@retrack.biz",
+                        "dateCreated": "Mon Feb 11 1985 17:10:58 GMT+0000 (UTC)"
+                    },
+                    "68529477-bc26-412e-b919-2cf3bcf30304": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Hurst",
+                        "lastName": "Le",
+                        "email": "hurst.le@entogrok.tv",
+                        "dateCreated": "Wed Jul 11 1984 19:00:57 GMT+0000 (UTC)"
+                    },
+                    "13ae9c31-a91f-4923-9a9b-5b9904f3d85b": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Nichols",
+                        "lastName": "Hodges",
+                        "email": "nichols.hodges@wrapture.co.uk",
+                        "dateCreated": "Fri Jan 05 1996 17:04:09 GMT+0000 (UTC)"
+                    },
+                    "9d7ec564-7842-4c7d-b503-c3a93d474af8": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Opal",
+                        "lastName": "Mosley",
+                        "email": "opal.mosley@opticall.ca",
+                        "dateCreated": "Mon Aug 13 2012 02:30:42 GMT+0000 (UTC)"
+                    },
+                    "b5455b47-a704-455c-9081-a27192b0570f": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Franco",
+                        "lastName": "Wiggins",
+                        "email": "franco.wiggins@rodeology.name",
+                        "dateCreated": "Mon May 22 2000 18:41:52 GMT+0000 (UTC)"
+                    },
+                    "0355008a-ded2-4f5f-9ddc-c4010a357030": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Darcy",
+                        "lastName": "Whitley",
+                        "email": "darcy.whitley@boilicon.net",
+                        "dateCreated": "Mon Mar 23 2015 19:07:43 GMT+0000 (UTC)"
+                    },
+                    "0554c7ef-e3b0-497e-95c0-1fd82bbef046": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Washington",
+                        "lastName": "Mayer",
+                        "email": "washington.mayer@twiggery.io",
+                        "dateCreated": "Sat Feb 01 1997 11:01:54 GMT+0000 (UTC)"
+                    },
+                    "97db40d4-a773-41f2-a23c-a74e10f9bafb": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Pearson",
+                        "lastName": "Chapman",
+                        "email": "pearson.chapman@coash.me",
+                        "dateCreated": "Fri Nov 02 2012 12:56:18 GMT+0000 (UTC)"
+                    },
+                    "c4933d02-f898-4576-871e-fb1b3b10cae8": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Mariana",
+                        "lastName": "Bird",
+                        "email": "mariana.bird@gazak.com",
+                        "dateCreated": "Tue Jun 19 2012 10:57:21 GMT+0000 (UTC)"
+                    },
+                    "2707c695-8f4c-4eae-9a1d-0a31178be931": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Jordan",
+                        "lastName": "Serrano",
+                        "email": "jordan.serrano@applideck.us",
+                        "dateCreated": "Mon Jan 29 2018 03:46:45 GMT+0000 (UTC)"
+                    },
+                    "591a1ebb-49fc-4303-b661-d09cf29d7948": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Lewis",
+                        "lastName": "Langley",
+                        "email": "lewis.langley@voipa.biz",
+                        "dateCreated": "Sun May 03 1970 16:03:15 GMT+0000 (UTC)"
+                    },
+                    "e43a9f96-67bb-48ce-93c9-96bb1e889c05": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Robbins",
+                        "lastName": "Townsend",
+                        "email": "robbins.townsend@myopium.info",
+                        "dateCreated": "Sat Mar 03 1990 18:09:42 GMT+0000 (UTC)"
+                    },
+                    "a6d0dc1b-1546-4857-9a1e-e2c9c2e6f7cd": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Rosalie",
+                        "lastName": "Burns",
+                        "email": "rosalie.burns@vitricomp.biz",
+                        "dateCreated": "Wed Jun 29 2005 07:11:34 GMT+0000 (UTC)"
+                    },
+                    "09ffa8ba-a67a-4ef3-9f93-1963cef5a001": {
+                        
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Lyons",
+                        "lastName": "Galloway",
+                        "email": "lyons.galloway@gology.tv",
+                        "dateCreated": "Thu Feb 15 1979 21:20:53 GMT+0000 (UTC)"
+                    },
+                    "dcc362e0-5cbd-43bd-9229-f6526f4123ff": {
+                    
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Leila",
+                        "lastName": "Mccullough",
+                        "email": "leila.mccullough@cowtown.co.uk",
+                        "dateCreated": "Tue Nov 12 1974 18:21:39 GMT+0000 (UTC)"
+                    },
+                    "89159f6a-66e5-4089-80e6-f81d3bf9db1e": {
+                    
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Massey",
+                        "lastName": "Wood",
+                        "email": "massey.wood@anivet.ca",
+                        "dateCreated": "Wed Jul 16 1997 09:13:59 GMT+0000 (UTC)"
+                    },
+                    "c7f97d92-7898-4c96-bb44-f12d60041318": {
+                    
+                        "profile": "http://placehold.it/32x32",
+                        "firstName": "Sasha",
+                        "lastName": "Waters",
+                        "email": "sasha.waters@uberlux.name",
+                        "dateCreated": "Sat Aug 20 2005 23:40:50 GMT+0000 (UTC)"
+                    }
+                };
+                /* Clear fridges */
+                firebase.database().ref('fridges').remove()
+
+                Object.keys(users).forEach(function(uid) {
+                    firebase.database().ref('users/' + uid).set({
+                        firstName: users[uid].firstName,
+                        lastName: users[uid].lastName,
+                        email: users[uid].email,
+                        dateCreated: users[uid].dateCreated,
+                        lastActive: new Date().toString()
+                    });
+                    var fridgeNames = ['spinach', 'eggs', 'milk', 'celery', 'carrots', 'onions', 'beets', 'lettuce', 'cucumber', 'kale', 'lemons', 'apples', 'oranges']
+                    var fridgeCategories = ['veg', 'diary', 'diary', 'veg', 'veg', 'veg', 'veg', 'veg', 'veg', 'veg', 'fruit', 'fruit', 'organges']
+                    var fridgeItems = {};
+                    Array.from(new Array(Math.floor(Math.random() * 11)), (x,i) => i).forEach(function(index){
+                        fridgeItems[uuidv4()] = {
+                            name: fridgeNames[index],
+                            Category: fridgeCategories[index],
+                            DateAdded: randomDate(new Date(Date.parse(users[uid].dateCreated)), new Date()).toString(),
+                            isPurchased: !!Math.floor(Math.random() * 2)
+    
+                        }
+                    })
+    
+                    firebase.database().ref('fridges/' + uuidv4()).set({
+                        userId: uid,
+                        items: fridgeItems
+                    });
+                })
+                
+            }
+
+            function getUserList() {
+                firebase.database().ref('users/').on('value', function(snapshot) {
+                    console.log('users', snapshot.val());
+                });
+            }
+
+            function getUser(uid) {
+                firebase.database().ref('users/' + uid).on('value', function(snapshot) {
+                    console.log(snapshot.val());
+                });
+            }
+
+            function addUser(firstName, lastName, email) {
+                firebase.database().ref('users/' + uuidv4()).set({
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    dateCreated: new Date().toString(),
+                });
+            }
+
+            function updateUser(uid, firstName, lastName, email) {
+
+                firebase.database().ref().update(updateObject);
+                var updateObject = {}
+                updateObject['users/' + uid] = {}
+                if (firstName) updateObject['users/' + uid].firstName = firstName;
+                if (lastName) updateObject['users/' + uid].lastName = lastName;
+                if (email) updateObject['users/' + uid].email = email;
+                console.log(updateObject)
+                firebase.database().ref().update(updateObject);
+            }
+
+
+        </script>
+    </body>
+</html>
+
+
+
+<!-- Model Schema
+    {
+    users: [
+        {
+            id: $id,
+            name: <String>,
+            email: <String>,
+            dateCreated: <Date>,
+            lastActive: <Date>
+        }
+    ],
+    fridges: [
+        {
+            
+            userId: $users/:$id
+            items: [
+                {
+                    name: <String>,
+                    Category: <String>,
+                    DateAdded: <Date>,
+                    isPurchased: <Boolean>
+                }
+            ]
+        }
+    ],
+    recipies: [
+        {
+            id: $id,
+            userID: $users/:$id
+        }
+    ]
+}
+ -->

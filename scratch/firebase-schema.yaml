@@ -1,0 +1,31 @@
+{
+    users: [
+        {
+            id: $id,
+            name: <String>,
+            email: <String>,
+            dateCreated: <Date>,
+            lastActive: <Date>
+        }
+    ],
+    fridges: [
+        {
+            
+            userId: $users/:$id
+            items: [
+                {
+                    name: <String>,
+                    Category: <String>,
+                    DateAdded: <Date>,
+                    isPurchased: <Boolean>
+                }
+            ]
+        }
+    ],
+    recipies: [
+        {
+            id: $id,
+            userID: $users/:$id
+        }
+    ]
+}
