@@ -2,9 +2,9 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 import styled from "styled-components";
+import Todo from "./Todo";
 //import { theme } from "../App";
 
 const ListWrapper = styled.div`
@@ -19,20 +19,19 @@ const Fab = styled.div`
   right: 24px;
 `;
 
+const fakeState = { todos: [1, 2, 3] };
+
 function Todos(props) {
   return (
     <>
       <ListWrapper>
         <List>
-          <ListItem>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Work" secondary="Jan 7, 2014" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Vacation" secondary="July 20, 2014" />
-          </ListItem>
+          {fakeState.todos.map(todo => (
+            <>
+              <Todo />
+              <Divider />
+            </>
+          ))}
         </List>
       </ListWrapper>
       <Fab>
