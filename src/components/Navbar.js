@@ -1,22 +1,24 @@
-import React from 'react';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import styled from 'styled-components';
-import { navigate } from '@reach/router';
+import React from "react";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+//import Icon from "@material-ui/core/Icon";
+import RestoreIcon from "@material-ui/icons/Restore";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import styled from "styled-components";
+import { navigate } from "@reach/router";
 
 const NavWrapper = styled.div`
   .bottomNavigation {
     width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 `;
 
 class Navbar extends React.Component {
   state = {
-    value: 'recents'
+    value: "recents"
   };
 
   handleChange = (event, value) => {
@@ -50,11 +52,11 @@ class Navbar extends React.Component {
             value="meals"
             icon={<LocationOnIcon />}
           />
-          <BottomNavigationAction
+          {/* <BottomNavigationAction
             label="Recipes"
             value="recipes"
             icon={<Icon>folder</Icon>}
-          />
+          /> */}
         </BottomNavigation>
       </NavWrapper>
     );
