@@ -182,7 +182,7 @@
                     }
                 };
                 /* Clear fridges */
-                firebase.database().ref('fridges').remove()
+                firebase.database().ref('userFoodLists').remove()
 
                 Object.keys(users).forEach(function(uid) {
                     firebase.database().ref('users/' + uid).set({
@@ -205,7 +205,7 @@
                         }
                     })
     
-                    firebase.database().ref('fridges/' + uuidv4()).set({
+                    firebase.database().ref('userFoodLists/' + uuidv4()).set({
                         userId: uid,
                         items: fridgeItems
                     });
