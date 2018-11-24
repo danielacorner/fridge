@@ -1,9 +1,7 @@
 import React from "react";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-//import Icon from "@material-ui/core/Icon";
 import { FormatListBulleted, Inbox, RestaurantMenu } from "@material-ui/icons/";
-// import RestaurantMenu from '@material-ui/icons/RestaurantMenu'
 import styled from "styled-components";
 import { navigate } from "@reach/router";
 

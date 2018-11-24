@@ -5,6 +5,7 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import styled from "styled-components";
 import Todo from "./Todo";
+import theme from "../Theme";
 //import { theme } from "../App";
 
 const ListWrapper = styled.div`
@@ -17,6 +18,10 @@ const Fab = styled.div`
   position: absolute;
   bottom: 80px;
   right: 24px;
+  button {
+    background-color: ${theme.primary};
+    color: white;
+  }
 `;
 
 const fakeState = { todos: [1, 2, 3] };
@@ -35,7 +40,12 @@ function Todos(props) {
         </List>
       </ListWrapper>
       <Fab>
-        <Button variant="fab" color="primary" aria-label="Add">
+        <Button
+          className="fab"
+          variant="fab"
+          color={theme.primary}
+          aria-label="Add"
+        >
           <AddIcon />
         </Button>
       </Fab>

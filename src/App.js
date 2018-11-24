@@ -6,10 +6,6 @@ import Fridge from "./components/Fridge";
 import Meals from "./components/Meals";
 import Navbar from "./components/Navbar";
 
-export const theme = {
-  color: "limegreen"
-};
-
 const AppBackground = styled.div`
   height: 100vh;
   background: #eeeeee;
