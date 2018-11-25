@@ -196,19 +196,24 @@
                     var fridgeCategories = ['veg', 'diary', 'diary', 'veg', 'veg', 'veg', 'veg', 'veg', 'veg', 'veg', 'fruit', 'fruit', 'organges']
                     var fridgeItems = {};
                     Array.from(new Array(Math.floor(Math.random() * 11)), (x,i) => i).forEach(function(index){
-                        fridgeItems[uuidv4()] = {
+                        var itemId = uuidv4();
+                        fridgeItems[itemId] = {
                             name: fridgeNames[index],
-                            Category: fridgeCategories[index],
-                            DateAdded: randomDate(new Date(Date.parse(users[uid].dateCreated)), new Date()).toString(),
+                            category: fridgeCategories[index],
+                            dateAdded: randomDate(new Date(Date.parse(users[uid].dateCreated)), new Date()).toString(),
                             isPurchased: !!Math.floor(Math.random() * 2)
     
                         }
                     })
-    
-                    firebase.database().ref('userFoodLists/' + uuidv4()).set({
+                    var foodListId = uuidv4();
+                    firebase.database().ref('userFoodLists/' + foodListId).set({
                         userId: uid,
                         items: fridgeItems
                     });
+                    firebase.database().ref('users/' + uid).update({
+                        foodListId: foodListId
+                    });
+
                 })
                 
             }

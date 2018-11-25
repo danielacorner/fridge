@@ -6,6 +6,8 @@ import Fridge from "./components/Fridge";
 import Meals from "./components/Meals";
 import Navbar from "./components/Navbar";
 
+import Firebase, { FirebaseContext } from './services/Firebase';
+
 const AppBackground = styled.div`
   height: 100vh;
   background: #eeeeee;
@@ -14,15 +16,17 @@ const AppBackground = styled.div`
 class App extends Component {
   render() {
     return (
-      <AppBackground>
-        <Router>
-          <Todos path="/" />
-          <Fridge path="fridge" />
-          <Meals path="meals" />
-          {/* <Recipes path="recipes" /> */}
-        </Router>
-        <Navbar />
-      </AppBackground>
+      <FirebaseContext.Provider value={new Firebase()}>
+        <AppBackground>
+          <Router>
+            <Todos path="/" />
+            <Fridge path="fridge" />
+            <Meals path="meals" />
+            {/* <Recipes path="recipes" /> */}
+          </Router>
+          <Navbar />
+        </AppBackground>
+      </FirebaseContext.Provider>
     );
   }
 }

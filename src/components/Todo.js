@@ -4,9 +4,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 function Todo(props) {
+  const { name, category } = props.item
   return (
-    <ListItem>
-      <ListItemText primary="Vacation" secondary="July 20, 2014" />
+    <ListItem >
+      <ListItemText primary={name} secondary={category} />
     </ListItem>
   );
 }
