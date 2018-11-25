@@ -5,6 +5,7 @@ import Todos from "./components/Todos";
 import Fridge from "./components/Fridge";
 import Meals from "./components/Meals";
 import Navbar from "./components/Navbar";
+import LandingPage from "./components/LandingPage"
 
 const AppBackground = styled.div`
   height: 100vh;
@@ -19,6 +20,7 @@ class App extends Component {
           <Todos path="/" />
           <Fridge path="fridge" />
           <Meals path="meals" />
+          <LandingPage path="welcome" />
           {/* <Recipes path="recipes" /> */}
         </Router>
         <Navbar />
