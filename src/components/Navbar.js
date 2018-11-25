@@ -35,7 +35,7 @@ class Navbar extends React.Component {
           className="bottomNavigation"
         >
           <BottomNavigationAction
-            label="Todos"
+            label="ToDos"
             value=""
             icon={<FormatListBulleted />}
           />
