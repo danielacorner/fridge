@@ -3,4 +3,4 @@ export default {
   authDomain: "<APP_DOMAIN>",
   databaseURL: "<DB_URL>",
   storageBucket: "bucket.appspot.com"
-}
+};

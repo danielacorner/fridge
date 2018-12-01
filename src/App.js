@@ -1,16 +1,18 @@
+import { Router } from "@reach/router";
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Router } from "@reach/router";
-import Todos from "./components/Todos";
 import Fridge from "./components/Fridge";
+import LandingPage from "./components/LandingPage";
 import Meals from "./components/Meals";
 import Navbar from "./components/Navbar";
-import LandingPage from "./components/LandingPage";
-import User from "./components/User";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
-
+import Todos from "./components/Todos";
+import User from "./components/User";
 import Firebase, { FirebaseContext } from "./services/Firebase";
+import Admin from "./components/Admin";
+import Account from "./components/Account";
+import PasswordForget from "./components/PasswordForget";
 
 const AppBackground = styled.div`
   height: 100vh;
@@ -30,6 +32,9 @@ class App extends Component {
             <LandingPage path="welcome" />
             <SignIn path="signin" />
             <SignUp path="signup" />
+            <Account path="account" />
+            <PasswordForget path="pw-forget" />
+            <Admin path="admin" />
             {/* <Recipes path="recipes" /> */}
           </Router>
           <Navbar />
