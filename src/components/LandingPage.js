@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import theme from "../Theme";
-import { navigate } from "@reach/router";
 
 export default class LandingPage extends Component {
-  state = {
-    label: "welcome"
-  };
-
   render() {
     return (
       <div>
