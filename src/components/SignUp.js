@@ -6,9 +6,24 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { navigate } from "@reach/router"
 
+import styled from 'styled-components';
 
-import  { withFirebase } from '../services/Firebase';
+import Card from '@material-ui/core/Card';
+import { PATHS } from '../const/paths';
+import { withFirebase } from '../services/Firebase';
 
+
+const BackgroundWrapper = styled.div`
+  background:#eee;
+`
+
+const CardWrapper = styled(Card)`
+  max-width: 500px;
+  padding:1vw;
+  margin: auto;
+  background:#eee;
+
+`
 const INITIAL_STATE = {
   name: '',
   email: '',
@@ -31,12 +46,10 @@ class SignUp extends Component {
 
     this.props.firebase.userCreate(email, passwordOne)
       .then(authUser => {
-        this.setState({ ...INITIAL_STATE });
-        navigate('/');
-
-      })
-      .catch(error => {
-        this.setState({ error });
+        this.setState({ ...INITIAL_STATE })
+        navigate(PATHS.TODOS)
+      }).catch(error => {
+        this.setState({ error })
       });
 
     e.preventDefault();
@@ -58,27 +71,29 @@ class SignUp extends Component {
 
     const invalid = ((name === '') || (email === '') || (username === '') || (passwordOne === '') || (passwordTwo === '') || (passwordOne !== passwordTwo));
     return (
-      <>
-        <form onSubmit={this.onSubmit}>
-          <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
-          <DialogContent>
-            <TextField margin="dense" label="Name" type="text" name="name" value={name} onChange={this.onChange} fullWidth autoFocus/>
-            <TextField margin="dense" label="Username" type="text" name="username" value={username} onChange={this.onChange} fullWidth/>
-            <TextField margin="dense" label="Email" type="email" name="email" value={email} onChange={this.onChange} fullWidth/>
-            <TextField margin="dense" label="Password" name="passwordOne" value={passwordOne} onChange={this.onChange} fullWidth/>
-            <TextField margin="dense" label="Confirm Password" name="passwordTwo" value={passwordTwo} onChange={this.onChange} fullWidth/>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleCloseSignUp} color="primary"  disabled={invalid}>
-              Cancel
-            </Button>
-            <Button onClick={this.handleCloseSignUp} color="primary" type="submit" disabled={invalid}>
-              Sign Up
-            </Button>
-            {error && <p>{error.message}</p>}
-          </DialogActions>
-        </form>
-      </>
+      <BackgroundWrapper>
+        <CardWrapper>
+          <form onSubmit={this.onSubmit}>
+            <DialogTitle id="form-dialog-title">Sign Up</DialogTitle>
+            <DialogContent>
+              <TextField margin="dense" label="Name" type="text" name="name" value={name} onChange={this.onChange} fullWidth autoFocus/>
+              <TextField margin="dense" label="Username" type="text" name="username" value={username} onChange={this.onChange} fullWidth/>
+              <TextField margin="dense" label="Email" type="email" name="email" value={email} onChange={this.onChange} fullWidth/>
+              <TextField margin="dense" label="Password" name="passwordOne" value={passwordOne} onChange={this.onChange} fullWidth/>
+              <TextField margin="dense" label="Confirm Password" name="passwordTwo" value={passwordTwo} onChange={this.onChange} fullWidth/>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleCloseSignUp} color="primary"  disabled={invalid}>
+                Cancel
+              </Button>
+              <Button onClick={this.handleCloseSignUp} color="primary" type="submit" disabled={invalid}>
+                Sign Up
+              </Button>
+              {error && <p>{error.message}</p>}
+            </DialogActions>
+          </form>
+        </CardWrapper>
+      </BackgroundWrapper>
     );
   }
 }
