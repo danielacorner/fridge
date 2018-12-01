@@ -47,9 +47,10 @@ class SignUp extends Component {
     this.props.firebase.userCreate(email, passwordOne)
       .then(authUser => {
         this.setState({ ...INITIAL_STATE })
-        navigate(PATHS.TODOS)
+        navigate(PATHS.SIGN_IN)
       }).catch(error => {
         this.setState({ error })
+        navigate(PATHS.LANDING)
       });
 
     e.preventDefault();
