@@ -10,6 +10,8 @@ import User from "./components/User";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 
+import Firebase, { FirebaseContext } from "./services/Firebase";
+
 const AppBackground = styled.div`
   height: 100vh;
   background: #eeeeee;
@@ -18,19 +20,21 @@ const AppBackground = styled.div`
 class App extends Component {
   render() {
     return (
-      <AppBackground>
-        <Router>
-          <Todos path="/" />
-          <Fridge path="fridge" />
-          <Meals path="meals" />
-          <User path="user" />
-          <LandingPage path="welcome" />
-          <SignIn path="signin" />
-          <SignUp path="signup" />
-          {/* <Recipes path="recipes" /> */}
-        </Router>
-        <Navbar />
-      </AppBackground>
+      <FirebaseContext.Provider value={new Firebase()}>
+        <AppBackground>
+          <Router>
+            <Todos path="/" />
+            <Fridge path="fridge" />
+            <Meals path="meals" />
+            <User path="user" />
+            <LandingPage path="welcome" />
+            <SignIn path="signin" />
+            <SignUp path="signup" />
+            {/* <Recipes path="recipes" /> */}
+          </Router>
+          <Navbar />
+        </AppBackground>
+      </FirebaseContext.Provider>
     );
   }
 }
