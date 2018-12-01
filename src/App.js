@@ -19,6 +19,8 @@ const AppBackground = styled.div`
   background: #eeeeee;
 `;
 
+const NotFound = () => <div>Sorry, nothing here.</div>;
+
 class App extends Component {
   render() {
     return (
@@ -36,6 +38,7 @@ class App extends Component {
             <PasswordForget path="pw-forget" />
             <Admin path="admin" />
             {/* <Recipes path="recipes" /> */}
+            <NotFound default />
           </Router>
           <Navbar />
         </AppBackground>
