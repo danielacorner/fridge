@@ -8,11 +8,13 @@ import Navbar from "./components/Navbar";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Todos from "./components/Todos";
-import User from "./components/User";
+import Profile from "./components/Profile";
 import Firebase, { FirebaseContext } from "./services/Firebase";
 import Admin from "./components/Admin";
-import Account from "./components/Account";
+import Settings from "./components/Settings";
 import PasswordForget from "./components/PasswordForget";
+
+import { PATHS } from './const/paths';
 
 const AppBackground = styled.div`
   height: 100vh;
@@ -27,17 +29,19 @@ class App extends Component {
       <FirebaseContext.Provider value={new Firebase()}>
         <AppBackground>
           <Router>
-            <Todos path="/" />
-            <Fridge path="fridge" />
-            <Meals path="meals" />
-            <User path="user" />
-            <LandingPage path="welcome" />
-            <SignIn path="signin" />
-            <SignUp path="signup" />
-            <Account path="account" />
-            <PasswordForget path="pw-forget" />
-            <Admin path="admin" />
-            {/* <Recipes path="recipes" /> */}
+            <LandingPage path={PATHS.LANDING} />
+            <SignIn path={PATHS.SIGN_IN} />
+            <SignUp path={PATHS.SIGN_UP} />
+
+            <Todos path={PATHS.TODOS} />
+            <Fridge path={PATHS.FRIDGE} />
+            <Meals path={PATHS.MEALS} />
+            
+            <Profile path={PATHS.USER_PROFILE} />
+            <Settings path={PATHS.USER_SETTINGS} />
+            <PasswordForget path={PATHS.PW_FORGET} />
+            <Admin path={PATHS.ADMIN} />
+            {/* <Recipes path="recipes} /> */}
             <NotFound default />
           </Router>
           <Navbar />
