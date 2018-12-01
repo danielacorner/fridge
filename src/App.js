@@ -5,6 +5,7 @@ import Todos from "./components/Todos";
 import Fridge from "./components/Fridge";
 import Meals from "./components/Meals";
 import Navbar from "./components/Navbar";
+import LandingPage from "./components/LandingPage"
 
 import Firebase, { FirebaseContext } from './services/Firebase';
 
