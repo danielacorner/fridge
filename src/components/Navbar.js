@@ -34,7 +34,7 @@ class Navbar extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
-    navigate(`/${value}`);
+    navigate(`${value}`);
   };
 
   render() {
@@ -54,22 +54,22 @@ class Navbar extends React.Component {
                 >
                   <BottomNavigationAction
                     label="ToDos"
-                    value="todos"
+                    value={PATHS.TODOS}
                     icon={<FormatListBulleted />}
                   />
                   <BottomNavigationAction
                     label="Fridge"
-                    value="fridge"
+                    value={PATHS.FRIDGE}
                     icon={<Kitchen />}
                   />
                   <BottomNavigationAction
                     label="Meals"
-                    value="meals"
+                    value={PATHS.MEALS}
                     icon={<RestaurantMenu />}
                   />
                   <BottomNavigationAction
                     label="Profile"
-                    value="profile"
+                    value={PATHS.PROFILE}
                     icon={<AccountCircle />}
                   />
                   {/* <BottomNavigationAction
