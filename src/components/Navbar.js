@@ -1,7 +1,12 @@
 import React from "react";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { FormatListBulleted, Inbox, RestaurantMenu } from "@material-ui/icons/";
+import {
+  FormatListBulleted,
+  Kitchen,
+  RestaurantMenu,
+  AccountCircle
+} from "@material-ui/icons/";
 import styled from "styled-components";
 import { navigate } from "@reach/router";
 
@@ -42,12 +47,17 @@ class Navbar extends React.Component {
           <BottomNavigationAction
             label="Fridge"
             value="fridge"
-            icon={<Inbox />}
+            icon={<Kitchen />}
           />
           <BottomNavigationAction
             label="Meals"
             value="meals"
             icon={<RestaurantMenu />}
+          />
+          <BottomNavigationAction
+            label="User"
+            value="user"
+            icon={<AccountCircle />}
           />
           {/* <BottomNavigationAction
             label="Recipes"
