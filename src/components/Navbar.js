@@ -69,7 +69,7 @@ class Navbar extends React.Component {
                   />
                   <BottomNavigationAction
                     label="Profile"
-                    value={PATHS.PROFILE}
+                    value={PATHS.USER_PROFILE}
                     icon={<AccountCircle />}
                   />
                   {/* <BottomNavigationAction
