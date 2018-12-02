@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Checkbox from '@material-ui/core/Checkbox';
 import Card from '@material-ui/core/Card';
 
 import { navigate } from "@reach/router"
@@ -15,6 +16,11 @@ import styled from 'styled-components';
 
 const BackgroundWrapper = styled.div`
   background:#eee;
+`
+
+
+const CheckboxWrapper = styled.div`
+  margin-left: -15px;
 `
 
 const CardWrapper = styled(Card)`
@@ -30,6 +36,7 @@ const INITIAL_STATE = {
   username: '',
   password: '',
   error: null,
+  passwordType: 'password',
   msg: ''
 }
 
@@ -54,9 +61,10 @@ class SignIn extends Component {
 
   }
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+
+  togglePassword = e => this.setState({ passwordType: e.target.checked ? 'text' : 'password' });
+
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   goBack = (e) => {
     e.preventDefault();
@@ -70,6 +78,7 @@ class SignIn extends Component {
       username,
       passwordOne,
       passwordTwo,
+      passwordType,
       error,
     } = this.state;
 
@@ -81,7 +90,10 @@ class SignIn extends Component {
             <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
             <DialogContent>
               <TextField margin="dense" name="email" label="Email" type="email" onChange={this.onChange} fullWidth autoFocus />
-              <TextField margin="dense" name="password" label="Password" type="text" onChange={this.onChange} fullWidth />
+              <TextField margin="dense" name="password" label="Password" type={passwordType} onChange={this.onChange} fullWidth />
+              <CheckboxWrapper>
+                <Checkbox onChange={this.togglePassword} color="primary"/> Show Password
+              </CheckboxWrapper>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.goBack} color="primary">

@@ -4,6 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Checkbox from '@material-ui/core/Checkbox';
+
 import { navigate } from "@reach/router"
 
 import styled from 'styled-components';
@@ -15,6 +17,10 @@ import { withFirebase } from '../services/Firebase';
 
 const BackgroundWrapper = styled.div`
   background:#eee;
+`
+
+const CheckboxWrapper = styled.div`
+  margin-left: -15px;
 `
 
 const CardWrapper = styled(Card)`
@@ -30,6 +36,7 @@ const INITIAL_STATE = {
   username: '',
   passwordOne: '',
   passwordTwo: '',
+  passwordType: 'password',
   error: null,
   msg: ''
 }
@@ -55,10 +62,10 @@ class SignUp extends Component {
 
     e.preventDefault();
   }
+  togglePassword = e => this.setState({ passwordType: e.target.checked ? 'text' : 'password' });
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
   render() {
 
     const {
@@ -67,6 +74,7 @@ class SignUp extends Component {
       username,
       passwordOne,
       passwordTwo,
+      passwordType,
       error,
     } = this.state;
 
@@ -80,8 +88,11 @@ class SignUp extends Component {
               <TextField margin="dense" label="Name" type="text" name="name" value={name} onChange={this.onChange} fullWidth autoFocus/>
               <TextField margin="dense" label="Username" type="text" name="username" value={username} onChange={this.onChange} fullWidth/>
               <TextField margin="dense" label="Email" type="email" name="email" value={email} onChange={this.onChange} fullWidth/>
-              <TextField margin="dense" label="Password" name="passwordOne" value={passwordOne} onChange={this.onChange} fullWidth/>
-              <TextField margin="dense" label="Confirm Password" name="passwordTwo" value={passwordTwo} onChange={this.onChange} fullWidth/>
+              <TextField margin="dense" label="Password" type={passwordType} name="passwordOne" value={passwordOne} onChange={this.onChange} fullWidth/>
+              <TextField margin="dense" label="Confirm Password" type={passwordType} name="passwordTwo" value={passwordTwo} onChange={this.onChange} fullWidth/>
+              <CheckboxWrapper>
+                <Checkbox onChange={this.togglePassword} color="primary"/> Show Password
+              </CheckboxWrapper>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleCloseSignUp} color="primary"  disabled={invalid}>
