@@ -62,7 +62,7 @@ class App extends Component {
           <Router>
             <LandingPage path={PATHS.LANDING} authUser={authUser} />
             <SignIn path={PATHS.SIGN_IN} authUser={authUser} />
-            <SignUp path={PATHS.SIGN_UP} authUser={authUser} />
+            <SignUp path={PATHS.SIGN_UP} />
 
             <Todos path={PATHS.TODOS} authUser={authUser} />
             <Fridge path={PATHS.FRIDGE} />

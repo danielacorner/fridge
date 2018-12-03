@@ -49,10 +49,10 @@ class SignUp extends Component {
   }
 
   onSubmit = e => {
-    const { username, email, passwordOne } = this.state;
+    const { email, passwordOne } = this.state;
 
     this.props.firebase.userCreate(email, passwordOne)
-      .then(authUser => {
+      .then( () => {
         this.setState({ ...INITIAL_STATE })
         navigate(PATHS.SIGN_IN)
       }).catch(error => {
