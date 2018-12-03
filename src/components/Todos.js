@@ -6,7 +6,10 @@ import Divider from "@material-ui/core/Divider";
 import styled from "styled-components";
 import Todo from "./Todo";
 import theme from "../Theme";
-//import { theme } from "../App";
+
+import { navigate } from "@reach/router";
+
+import { PATHS } from '../const/paths';
 
 import  { withFirebase } from '../services/Firebase';
 

@@ -3,6 +3,9 @@ import Button from "@material-ui/core/Button";
 import theme from "../Theme";
 import styled from "styled-components";
 
+import { navigate } from "@reach/router";
+import { PATHS } from '../const/paths';
+
 const WelcomePage = styled.div`
   padding-top: calc(100vh / 2 - 164px);
 `;
@@ -25,18 +28,24 @@ const LandingButton = styled.div`
 `;
 
 export default class LandingPage extends Component {
+
+  componentDidUpdate() {
+    if(this.props.authUser) {
+      navigate(PATHS.TODOS);
+    }
+  }
   render() {
     return (
       <WelcomePage>
         <Welcome>Welcome to Fridge app!</Welcome>
         <LandingButtons>
           <LandingButton>
-            <Button variant="contained" color={theme.primary} href="/signup">
+            <Button variant="contained" color="primary" href="/signup">
               Sign Up
             </Button>
           </LandingButton>
           <LandingButton>
-            <Button variant="outlined" href="/signin">
+            <Button variant="outlined" color="primary" href="/signin">
               Sign In
             </Button>
           </LandingButton>
