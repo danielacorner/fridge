@@ -9,10 +9,13 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Todos from "./components/Todos";
 import Profile from "./components/Profile";
-import Firebase, { FirebaseContext } from "./services/Firebase";
+import { withFirebase } from "./services/Firebase";
 import Admin from "./components/Admin";
 import Settings from "./components/Settings";
 import PasswordForget from "./components/PasswordForget";
+
+
+import { navigate } from "@reach/router";
 
 import { PATHS } from './const/paths';
 
@@ -23,17 +26,45 @@ const AppBackground = styled.div`
 
 const NotFound = () => <div>Sorry, nothing here.</div>;
 
+const NON_AUTH_PATHS = [ PATHS.SIGN_IN, PATHS.SIGN_UP, PATHS.PW_FORGET ];
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authUser: null
+    };
+  }
+
+
+  componentDidUpdate () {
+    if(this.state.authUser === null && !NON_AUTH_PATHS.includes(window.location.pathname) ) {
+      navigate(PATHS.LANDING);
+    }
+  }
+
+  componentDidMount() {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(
+      authUser => {
+        authUser ? this.setState({ authUser }) : this.setState({ authUser: null });
+      },
+    );
+  }
+
+  componentWillUnmount() {
+    this.listener();
+  }
   render() {
+    const { authUser } = this.state;
     return (
-      <FirebaseContext.Provider value={new Firebase()}>
         <AppBackground>
           <Router>
-            <LandingPage path={PATHS.LANDING} />
-            <SignIn path={PATHS.SIGN_IN} />
+            <LandingPage path={PATHS.LANDING} authUser={authUser} />
+            <SignIn path={PATHS.SIGN_IN} authUser={authUser} />
             <SignUp path={PATHS.SIGN_UP} />
 
-            <Todos path={PATHS.TODOS} />
+            <Todos path={PATHS.TODOS} authUser={authUser} />
             <Fridge path={PATHS.FRIDGE} />
             <Meals path={PATHS.MEALS} />
             
@@ -46,9 +77,8 @@ class App extends Component {
           </Router>
           <Navbar />
         </AppBackground>
-      </FirebaseContext.Provider>
     );
   }
 }
 
-export default App;
+export default withFirebase(App);

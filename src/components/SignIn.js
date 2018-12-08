@@ -46,7 +46,11 @@ class SignIn extends Component {
     super(props);
     this.state = { ...INITIAL_STATE };
   }
-
+  componentDidUpdate() {
+    if(this.props.authUser) {
+      navigate(PATHS.TODOS);
+    }
+  }
   onSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -73,16 +77,13 @@ class SignIn extends Component {
   render() {
 
     const {
-      name,
       email,
-      username,
-      passwordOne,
-      passwordTwo,
+      password,
       passwordType,
       error,
     } = this.state;
 
-    const invalid = ((name === '') || (email === '') || (username === '') || (passwordOne === '') || (passwordTwo === '') || (passwordOne !== passwordTwo));
+    const inputIncomplete = ((email === '') || (password === ''));
     return (
       <BackgroundWrapper>
         <CardWrapper>
@@ -99,7 +100,7 @@ class SignIn extends Component {
               <Button onClick={this.goBack} color="primary">
                 Cancel
               </Button>
-              <Button type="submit" color="primary">
+              <Button type="submit" color="primary" disabled={inputIncomplete}>
                 Sign In
               </Button>
             </DialogActions>
