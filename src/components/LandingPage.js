@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import theme from "../Theme";
-import styled from "styled-components";
-
-import { navigate } from "@reach/router";
+import Button from '@material-ui/core/Button';
+import { navigate } from '@reach/router';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 import { PATHS } from '../const/paths';
 
 const WelcomePage = styled.div`
@@ -27,11 +26,11 @@ const LandingButton = styled.div`
   display: block;
 `;
 
-export default class LandingPage extends Component {
+class LandingPage extends Component {
 
   componentDidUpdate() {
-    if(this.props.authUser) {
-      navigate(PATHS.TODOS);
+    if( this.props.authUser ) {
+      navigate( PATHS.TODOS );
     }
   }
   render() {
@@ -54,3 +53,9 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+LandingPage.propTypes = {
+  authUser: PropTypes.object
+};
+
+export default LandingPage;

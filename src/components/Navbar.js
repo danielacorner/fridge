@@ -1,16 +1,16 @@
-import React from "react";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import React from 'react';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import {
   FormatListBulleted,
   Kitchen,
   RestaurantMenu,
   AccountCircle
-} from "@material-ui/icons/";
-import styled from "styled-components";
-import { navigate, Location } from "@reach/router";
+} from '@material-ui/icons/';
+import styled from 'styled-components';
+import { navigate, Location } from '@reach/router';
 
-import { PATHS } from "../const/paths";
+import { PATHS } from '../const/paths';
 
 const BLACKLISTED_PAGES = [
   PATHS.LANDING,
@@ -20,21 +20,21 @@ const BLACKLISTED_PAGES = [
 ];
 
 const NavWrapper = styled.div`
-  .bottomNavigation {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-  }
+.bottomNavigation {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
 `;
 
 class Navbar extends React.Component {
   state = {
-    value: "recents"
+    value: 'recents'
   };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-    navigate(`${value}`);
+  handleChange = ( event, value ) => {
+    this.setState( { value } );
+    navigate( `${ value }` );
   };
 
   render() {
@@ -42,49 +42,48 @@ class Navbar extends React.Component {
     return (
       <Location>
         {props => {
-          console.log(props.location.pathname);
-          return (
-            !BLACKLISTED_PAGES.includes(props.location.pathname) && (
-              <NavWrapper>
-                <BottomNavigation
-                  value={value}
-                  onChange={this.handleChange}
-                  showLabels
-                  className="bottomNavigation"
-                >
-                  <BottomNavigationAction
-                    label="ToDos"
-                    value={PATHS.TODOS}
-                    icon={<FormatListBulleted />}
-                  />
-                  <BottomNavigationAction
-                    label="Fridge"
-                    value={PATHS.FRIDGE}
-                    icon={<Kitchen />}
-                  />
-                  <BottomNavigationAction
-                    label="Meals"
-                    value={PATHS.MEALS}
-                    icon={<RestaurantMenu />}
-                  />
-                  <BottomNavigationAction
-                    label="Profile"
-                    value={PATHS.USER_PROFILE}
-                    icon={<AccountCircle />}
-                  />
-                  {/* <BottomNavigationAction
-                  label="Recipes"
-                  value="recipes"
-                  icon={<Icon>folder</Icon>}
-                /> */}
-                </BottomNavigation>
-              </NavWrapper>
+        return (
+          !BLACKLISTED_PAGES.includes( props.location.pathname ) && (
+          <NavWrapper>
+            <BottomNavigation
+            value={ value }
+            onChange={ this.handleChange }
+            showLabels
+            className="bottomNavigation"
+            >
+              <BottomNavigationAction
+            label="ToDos"
+            value={ PATHS.TODOS }
+            icon={ <FormatListBulleted /> }
+            />
+              <BottomNavigationAction
+            label="Fridge"
+            value={ PATHS.FRIDGE }
+            icon={ <Kitchen /> }
+            />
+              <BottomNavigationAction
+            label="Meals"
+            value={ PATHS.MEALS }
+            icon={ <RestaurantMenu /> }
+            />
+              <BottomNavigationAction
+            label="Profile"
+            value={ PATHS.USER_PROFILE }
+            icon={ <AccountCircle /> }
+            />
+              {/* <BottomNavigationAction
+              label="Recipes"
+              value="recipes"
+              icon={<Icon>folder</Icon>}
+            /> */}
+            </BottomNavigation>
+          </NavWrapper>
             )
-          );
-        }}
+            );
+          }}
       </Location>
-    );
-  }
-}
+          );
+        }
+      }
 
-export default Navbar;
+      export default Navbar;
