@@ -29,8 +29,8 @@ const LandingButton = styled.div`
 class LandingPage extends Component {
 
   componentDidUpdate() {
-    if( this.props.authUser ) {
-      navigate( PATHS.TODOS );
+    if(this.props.authUser) {
+      navigate(PATHS.TODOS);
     }
   }
   render() {

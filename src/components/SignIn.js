@@ -20,7 +20,7 @@ const CheckboxWrapper = styled.div`
   margin-left: -15px;
 `;
 
-const CardWrapper = styled( Card )`
+const CardWrapper = styled(Card)`
   max-width: 500px;
   padding:1vw;
   margin: auto;
@@ -38,36 +38,36 @@ const INITIAL_STATE = {
 };
 
 class SignIn extends Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = { ...INITIAL_STATE };
   }
   componentDidUpdate() {
-    if( this.props.authUser ) {
-      navigate( PATHS.TODOS );
+    if(this.props.authUser) {
+      navigate(PATHS.TODOS);
     }
   }
   onSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
 
-    this.props.firebase.userSignIn( email, password )
-      .then( authUser => {
-        this.setState( { ...INITIAL_STATE } );
-        navigate( PATHS.TODOS );
-      } ).catch( error => {
-        this.setState( { error } );
-      } );
+    this.props.firebase.userSignIn(email, password)
+      .then(authUser => {
+        this.setState({ ...INITIAL_STATE });
+        navigate(PATHS.TODOS);
+      }).catch(error => {
+        this.setState({ error });
+      });
 
   }
 
-  togglePassword = e => this.setState( { passwordType: e.target.checked ? 'text' : 'password' } );
+  togglePassword = e => this.setState({ passwordType: e.target.checked ? 'text' : 'password' });
 
-  onChange = e => this.setState( { [ e.target.name ]: e.target.value } );
+  onChange = e => this.setState({ [ e.target.name ]: e.target.value });
 
-  goBack = ( e ) => {
+  goBack = (e) => {
     e.preventDefault();
-    navigate( PATHS.LANDING );
+    navigate(PATHS.LANDING);
   }
   render() {
 
@@ -78,7 +78,7 @@ class SignIn extends Component {
       error,
     } = this.state;
 
-    const inputIncomplete = ( ( email === '' ) || ( password === '' ) );
+    const inputIncomplete = ((email === '') || (password === ''));
     return (
       <BackgroundWrapper>
         <CardWrapper>
@@ -109,9 +109,9 @@ class SignIn extends Component {
 
 SignIn.propTypes = {
   authUser: PropTypes.object,
-  firebase: PropTypes.shape( {
+  firebase: PropTypes.shape({
     userSignIn: PropTypes.func
-  } )
+  })
 };
 
-export default withFirebase( SignIn );
+export default withFirebase(SignIn);

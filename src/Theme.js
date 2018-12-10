@@ -1,9 +1,12 @@
 const Theme = {
-  primary: '#FF6138',
-  accent: '#FFFF9D',
-  third: '#BEEB9F',
+  primary: '#55D269',
+  accent: '#31BB47',
+  third: '#008000',
   fourth: '#79BD8F',
-  fifth: '#00A388'
+  fifth: '#00A388',
+  text: {
+    primary: '#FFFFFF'
+  }
 };
 
 export default Theme;
