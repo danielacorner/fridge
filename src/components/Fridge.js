@@ -1,14 +1,11 @@
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
-import AddIcon from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { withFirebase } from '../services/Firebase';
-import theme from '../Theme';
-import Todo from './Todo';
 import AddItem from './AddItem';
+import Todo from './Todo';
 
 const ListWrapper = styled.div`
   width: 100%;
