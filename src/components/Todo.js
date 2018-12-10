@@ -3,7 +3,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Todo( props ) {
+function Todo(props) {
   const { name, category } = props.item;
   return (
     <ListItem >
@@ -13,10 +13,10 @@ function Todo( props ) {
 }
 
 Todo.propTypes = {
-  item: PropTypes.shape( {
+  item: PropTypes.shape({
       name: PropTypes.string,
       category: PropTypes.string
-  } )
+  })
 };
 
 export default Todo;

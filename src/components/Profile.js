@@ -8,7 +8,7 @@ import { withFirebase } from '../services/Firebase';
 class Profile extends Component {
   handleSignOut = e => {
     this.props.firebase.userSignOut();
-    navigate( PATHS.LANDING );
+    navigate(PATHS.LANDING);
   };
 
   render() {
@@ -23,9 +23,9 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  firebase: PropTypes.shape( {
+  firebase: PropTypes.shape({
     userSignOut: PropTypes.func
-  } )
+  })
 };
 
-export default withFirebase( Profile );
+export default withFirebase(Profile);
